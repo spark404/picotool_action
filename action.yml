@@ -5,10 +5,11 @@ inputs:
     description: 'The command to execute with picotool (info, load, safe, verify, reboot, help'
     required: 'true'
     default: 'help'
-  argument:
+  arguments:
     decription: 'The arguments passed to the command'
 runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
-    - ${{inputs.command}} ${{inputs.argument}}
+    - ${{inputs.command}}
+    - ${{inputs.arguments}}

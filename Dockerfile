@@ -16,6 +16,9 @@ FROM ubuntu:latest
 ENV DEBIAN_FRONTEND="noninteractive" TZ="Europe/Amsterdam"
 RUN apt-get update -y
 RUN apt-get install -y libusb-1.0-0
+
 COPY --from=0 /picotool/build/picotool /usr/bin
 
-ENTRYPOINT ["/usr/bin/picotool"]
+COPY entry-point.sh /entry-point.sh
+
+ENTRYPOINT ["/entry-point.sh"]
